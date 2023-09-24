@@ -6,16 +6,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.google.gson.Gson;
+
+import dto.Book;
+
 @WebServlet("/first")
 public class First extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        // Set the content type and character encoding for the response
-        res.setContentType("text/plain");
-        res.setCharacterEncoding("UTF-8");
+        res.setContentType("application/json");
 
-        // Write the "Hello, World!" message to the response
-        res.getWriter().write("Hello, World!");
+        // creating the book dto
+        Book book = new Book("First Book", "Jhon Doe");
+        Gson gson = new Gson();
+
+        String bookConverted = gson.toJson(book);
+
+        res.getWriter().write(bookConverted);
     }
 }

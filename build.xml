@@ -1,9 +1,9 @@
 <project name="testservlet" default="deploy">
     <property name="tomcat.dir" value="/usr/local/tomcat10" />
-    <property name="webapp.name" value="testservlet" />
+    <property name="webapp.name" value="servletapp" />
 
     <target name="deploy">
-        <copy file="./target/testservlet.war" todir="${tomcat.dir}/webapps" />
+        <copy file="./target/servletapp.war" todir="${tomcat.dir}/webapps" />
         <echo message="Deployed ${webapp.name} to Tomcat" />
     </target>
 
